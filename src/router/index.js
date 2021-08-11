@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import ListadoProductos from '../views/producto/ListadoProductos.vue'
 import AgregarProducto from '../views/producto/AgregarProducto.vue'
+import ModificarProducto from '../views/producto/ModificarProducto.vue'
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,11 @@ const routes = [
     path: '/producto/create', // URL path
     name: 'AgregarProducto', // nombre de la ruta
     component: AgregarProducto // componente que se llama
+  },
+  {
+    path: '/producto/edit/:id', // por la URL viaja el parametro :id para recibirlo
+    name: 'ModificarProducto', // nombre de la ruta
+    component: ModificarProducto // componente que se llama
   },
   {
     path: '/about',

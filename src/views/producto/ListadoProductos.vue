@@ -9,7 +9,7 @@
 <script>
 import ListadoProductosComponent from '../../components/producto/ListadoProductosComponent.vue'
 export default {
-    components: {ListadoProductosComponent},
-    name: "ListadoProductos"
+    name: "ListadoProductos",
+    components: {ListadoProductosComponent}
 }
 </script>

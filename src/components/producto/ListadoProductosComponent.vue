@@ -1,6 +1,6 @@
 <template>
     <div class="table-responsive">
-        <!-- <b-table striped hover>
+        <!-- <table>
             <tr>
                 <th>Nombre</th>
                 <th>Categoria</th>
@@ -12,10 +12,24 @@
                 <td>{{ p.categoria.nombre_categoria }}</td>
                 <td>{{ p.precio }}</td>
                 <td>{{ p.stock }}</td>
+                <td>
+                    <router-link :to="`producto/edit/${p.id}`">Modificar</router-link>
+                </td>
             </tr>
-        </b-table> -->
+        </table> -->
 
-        <b-table fixed striped bordered hover :items="productos" :fields="fields" :primary-key="productos.id">
+        <b-table fixed striped bordered hover 
+            :items="productos" 
+            :fields="fields" 
+            :primary-key="productos.id"
+        >
+            <template #cell(id)="data">
+                <router-link :to="`producto/edit/${data.value}`">
+                    <b-button pill variant="outline-primary" size="sm" class="mb-2">
+                        Modificar <b-icon icon="gear-fill" aria-hidden="true"></b-icon>
+                    </b-button>
+                </router-link>
+            </template>
         </b-table>
     </div>
 </template>
@@ -43,6 +57,11 @@ export default {
                     key: "stock",
                     sortable: true
                 },
+                {
+                    key:"id",
+                    label:"Opciones",
+                    // value: "Ferra"
+                }
             ],
             productos: []
         }
@@ -61,7 +80,7 @@ export default {
             let data = await fetch(url)
             // se pasa la data al arreglo de productos de arriva
             this.productos = await data.json()
-            console.log(this.productos);
+            
         }
     }
 }
