@@ -30,6 +30,7 @@
                     </b-button>
                 </router-link>
             </template>
+
         </b-table>
     </div>
 </template>
@@ -60,14 +61,13 @@ export default {
                 {
                     key:"id",
                     label:"Opciones",
-                    // value: "Ferra"
                 }
             ],
             productos: []
         }
     },
     // Metodo nativo de Vue
-    // created() -> Puede llamar a un Componente o Metodo que se ejecutará cuando
+    // created() -> Puede llamar a un Componente o Metodo que se ejecutará justo antes que
     //              se llame al componente(ListadoProductosComponent.vue)  
     created() {
         this.cargarProductos()
@@ -80,7 +80,6 @@ export default {
             let data = await fetch(url)
             // se pasa la data al arreglo de productos de arriva
             this.productos = await data.json()
-            
         }
     }
 }
