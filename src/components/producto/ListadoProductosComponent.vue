@@ -29,6 +29,10 @@
                         Modificar <b-icon icon="gear-fill" aria-hidden="true"></b-icon>
                     </b-button>
                 </router-link>
+                &nbsp;&nbsp;
+                <b-button pill variant="outline-danger" size="sm" class="mb-2" @click="eliminarProducto(data.value)">
+                    Eliminar <b-icon icon="x-circle-fill" aria-hidden="true"></b-icon>
+                </b-button>
             </template>
 
         </b-table>
@@ -80,6 +84,19 @@ export default {
             let data = await fetch(url)
             // se pasa la data al arreglo de productos de arriva
             this.productos = await data.json()
+        },
+        async eliminarProducto(id) {
+
+            if(!confirm("¿Está seguro que desea eliminar?")) return 
+
+            let url = process.env.VUE_APP_URL_API + "productos/" + id + "/"
+            await fetch(url, {
+                method: "DELETE"
+            })
+
+            alert("Producto Eliminado!")
+            // recargo todos los productos para que no se vea el producto recien eliminado
+            this.cargarProductos()
         }
     }
 }

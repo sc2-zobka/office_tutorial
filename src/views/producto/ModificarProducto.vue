@@ -2,8 +2,7 @@
     <div>
         <h2>Modificar Producto</h2>
         <br>
-        <formulario-producto-component/>
-         {{ producto }}
+        <formulario-producto-component :modificando="true" :producto="producto" />
     </div>
 </template>
 
